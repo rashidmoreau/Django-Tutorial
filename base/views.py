@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Room, Topic
 from .forms import RoomForm
 from django.db.models import Q
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -11,6 +12,16 @@ from django.db.models import Q
 #   {'id': 3, 'name': 'Lets learn React'},
 #]
 
+def loginPage(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        #try:
+           # user = User.objects.get(username=username) 
+
+
+    context = {}
+    return render(request, 'base/login_register.html', context)
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
